@@ -1,0 +1,40 @@
+{
+  "year": 2015,
+  "_notes": "Magnussen subbed for Alonso at Australia only. Rossi subbed at Manor late season. 'Nico' omitted as alias — ambiguous between Rosberg and Hulkenberg.",
+  "drivers": [
+    {"id": "HAM", "name": "Lewis Hamilton",   "team": "Mercedes",    "number": 44, "aliases": ["hamilton", "lewis hamilton", "lewis"]},
+    {"id": "ROS", "name": "Nico Rosberg",     "team": "Mercedes",    "number": 6,  "aliases": ["rosberg", "nico rosberg"]},
+    {"id": "VET", "name": "Sebastian Vettel", "team": "Ferrari",     "number": 5,  "aliases": ["vettel", "sebastian vettel", "sebastian", "seb"]},
+    {"id": "RAI", "name": "Kimi Raikkonen",   "team": "Ferrari",     "number": 7,  "aliases": ["raikkonen", "räikkönen", "kimi raikkonen", "kimi"]},
+    {"id": "MAS", "name": "Felipe Massa",     "team": "Williams",    "number": 19, "aliases": ["massa", "felipe massa"]},
+    {"id": "BOT", "name": "Valtteri Bottas",  "team": "Williams",    "number": 77, "aliases": ["bottas", "valtteri bottas", "valtteri"]},
+    {"id": "RIC", "name": "Daniel Ricciardo", "team": "Red Bull",    "number": 3,  "aliases": ["ricciardo", "daniel ricciardo", "daniel", "danny ric"]},
+    {"id": "KVY", "name": "Daniil Kvyat",     "team": "Red Bull",    "number": 26, "aliases": ["kvyat", "daniil kvyat", "daniil"]},
+    {"id": "HUL", "name": "Nico Hulkenberg",  "team": "Force India", "number": 27, "aliases": ["hulkenberg", "hülkenberg", "nico hulkenberg"]},
+    {"id": "PER", "name": "Sergio Perez",     "team": "Force India", "number": 11, "aliases": ["perez", "pérez", "sergio perez", "sergio", "checo"]},
+    {"id": "GRO", "name": "Romain Grosjean",  "team": "Lotus",       "number": 8,  "aliases": ["grosjean", "romain grosjean", "romain"]},
+    {"id": "MAL", "name": "Pastor Maldonado", "team": "Lotus",       "number": 13, "aliases": ["maldonado", "pastor maldonado", "pastor"]},
+    {"id": "VER", "name": "Max Verstappen",   "team": "Toro Rosso",  "number": 33, "aliases": ["verstappen", "max verstappen", "max"]},
+    {"id": "SAI", "name": "Carlos Sainz",     "team": "Toro Rosso",  "number": 55, "aliases": ["sainz", "carlos sainz", "carlos"]},
+    {"id": "NAS", "name": "Felipe Nasr",      "team": "Sauber",      "number": 12, "aliases": ["nasr", "felipe nasr"]},
+    {"id": "ERI", "name": "Marcus Ericsson",  "team": "Sauber",      "number": 9,  "aliases": ["ericsson", "marcus ericsson", "marcus"]},
+    {"id": "ALO", "name": "Fernando Alonso",  "team": "McLaren",     "number": 14, "aliases": ["alonso", "fernando alonso", "fernando"]},
+    {"id": "BUT", "name": "Jenson Button",    "team": "McLaren",     "number": 22, "aliases": ["button", "jenson button", "jenson"]},
+    {"id": "MAG", "name": "Kevin Magnussen",  "team": "McLaren",     "number": 20, "aliases": ["magnussen", "kevin magnussen", "kevin", "k-mag", "kmag"]},
+    {"id": "STE", "name": "Will Stevens",     "team": "Manor",       "number": 28, "aliases": ["stevens", "will stevens"]},
+    {"id": "MRH", "name": "Roberto Merhi",    "team": "Manor",       "number": 98, "aliases": ["merhi", "roberto merhi"]},
+    {"id": "RSI", "name": "Alexander Rossi",  "team": "Manor",       "number": 53, "aliases": ["rossi", "alexander rossi"]}
+  ],
+  "teams": [
+    {"id": "MER", "name": "Mercedes",    "aliases": ["mercedes", "silver arrows"]},
+    {"id": "FER", "name": "Ferrari",     "aliases": ["ferrari", "scuderia"]},
+    {"id": "WIL", "name": "Williams",    "aliases": ["williams"]},
+    {"id": "RBR", "name": "Red Bull",    "aliases": ["red bull", "rbr"]},
+    {"id": "FIN", "name": "Force India", "aliases": ["force india"]},
+    {"id": "LOT", "name": "Lotus",       "aliases": ["lotus"]},
+    {"id": "TOR", "name": "Toro Rosso",  "aliases": ["toro rosso", "str"]},
+    {"id": "SAU", "name": "Sauber",      "aliases": ["sauber"]},
+    {"id": "MCL", "name": "McLaren",     "aliases": ["mclaren"]},
+    {"id": "MAN", "name": "Manor",       "aliases": ["manor", "marussia"]}
+  ]
+}

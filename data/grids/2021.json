@@ -1,0 +1,39 @@
+{
+  "year": 2021,
+  "_notes": "Racing Point rebranded Aston Martin. Renault rebranded Alpine. Alonso F1 return with Alpine. Perez to Red Bull. Sainz to Ferrari. Ricciardo to McLaren. Tsunoda, Mazepin, Mick Schumacher F1 rookies. Kubica subbed at Alfa Romeo.",
+  "drivers": [
+    {"id": "HAM", "name": "Lewis Hamilton",     "team": "Mercedes",     "number": 44, "aliases": ["hamilton", "lewis hamilton", "lewis"]},
+    {"id": "BOT", "name": "Valtteri Bottas",    "team": "Mercedes",     "number": 77, "aliases": ["bottas", "valtteri bottas", "valtteri"]},
+    {"id": "VER", "name": "Max Verstappen",     "team": "Red Bull",     "number": 33, "aliases": ["verstappen", "max verstappen", "max"]},
+    {"id": "PER", "name": "Sergio Perez",       "team": "Red Bull",     "number": 11, "aliases": ["perez", "pérez", "sergio perez", "sergio", "checo"]},
+    {"id": "RIC", "name": "Daniel Ricciardo",   "team": "McLaren",      "number": 3,  "aliases": ["ricciardo", "daniel ricciardo", "daniel", "danny ric"]},
+    {"id": "NOR", "name": "Lando Norris",       "team": "McLaren",      "number": 4,  "aliases": ["norris", "lando norris", "lando"]},
+    {"id": "VET", "name": "Sebastian Vettel",   "team": "Aston Martin", "number": 5,  "aliases": ["vettel", "sebastian vettel", "sebastian", "seb"]},
+    {"id": "STR", "name": "Lance Stroll",       "team": "Aston Martin", "number": 18, "aliases": ["stroll", "lance stroll", "lance"]},
+    {"id": "ALO", "name": "Fernando Alonso",    "team": "Alpine",       "number": 14, "aliases": ["alonso", "fernando alonso", "fernando"]},
+    {"id": "OCO", "name": "Esteban Ocon",       "team": "Alpine",       "number": 31, "aliases": ["ocon", "esteban ocon", "esteban"]},
+    {"id": "LEC", "name": "Charles Leclerc",    "team": "Ferrari",      "number": 16, "aliases": ["leclerc", "charles leclerc", "charles"]},
+    {"id": "SAI", "name": "Carlos Sainz",       "team": "Ferrari",      "number": 55, "aliases": ["sainz", "carlos sainz", "carlos"]},
+    {"id": "GAS", "name": "Pierre Gasly",       "team": "AlphaTauri",   "number": 10, "aliases": ["gasly", "pierre gasly", "pierre"]},
+    {"id": "TSU", "name": "Yuki Tsunoda",       "team": "AlphaTauri",   "number": 22, "aliases": ["tsunoda", "yuki tsunoda", "yuki"]},
+    {"id": "RAI", "name": "Kimi Raikkonen",     "team": "Alfa Romeo",   "number": 7,  "aliases": ["raikkonen", "räikkönen", "kimi raikkonen", "kimi"]},
+    {"id": "GIO", "name": "Antonio Giovinazzi", "team": "Alfa Romeo",   "number": 99, "aliases": ["giovinazzi", "antonio giovinazzi", "antonio"]},
+    {"id": "KUB", "name": "Robert Kubica",      "team": "Alfa Romeo",   "number": 88, "aliases": ["kubica", "robert kubica", "robert"]},
+    {"id": "MAZ", "name": "Nikita Mazepin",     "team": "Haas",         "number": 9,  "aliases": ["mazepin", "nikita mazepin", "nikita"]},
+    {"id": "MSC", "name": "Mick Schumacher",    "team": "Haas",         "number": 47, "aliases": ["schumacher", "mick schumacher", "mick"]},
+    {"id": "RUS", "name": "George Russell",     "team": "Williams",     "number": 63, "aliases": ["russell", "george russell", "george"]},
+    {"id": "LAT", "name": "Nicholas Latifi",    "team": "Williams",     "number": 6,  "aliases": ["latifi", "nicholas latifi", "nicholas"]}
+  ],
+  "teams": [
+    {"id": "MER", "name": "Mercedes",     "aliases": ["mercedes", "silver arrows"]},
+    {"id": "RBR", "name": "Red Bull",     "aliases": ["red bull", "rbr"]},
+    {"id": "MCL", "name": "McLaren",      "aliases": ["mclaren"]},
+    {"id": "AMR", "name": "Aston Martin", "aliases": ["aston martin", "aston"]},
+    {"id": "ALP", "name": "Alpine",       "aliases": ["alpine"]},
+    {"id": "FER", "name": "Ferrari",      "aliases": ["ferrari", "scuderia"]},
+    {"id": "AT",  "name": "AlphaTauri",   "aliases": ["alphatauri", "alpha tauri"]},
+    {"id": "ALF", "name": "Alfa Romeo",   "aliases": ["alfa romeo", "alfa"]},
+    {"id": "HAA", "name": "Haas",         "aliases": ["haas"]},
+    {"id": "WIL", "name": "Williams",     "aliases": ["williams"]}
+  ]
+}

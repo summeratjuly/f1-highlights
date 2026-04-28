@@ -1,0 +1,41 @@
+{
+  "_doc": "Locked layout for interstitial bridge cards. Editing this file is the ONLY way layout changes — every card is rendered by the same code reading this same config, which is the consistency guarantee.",
+  "size": [1920, 1080],
+  "darken_alpha": 0.45,
+  "accent": {
+    "side": "left",
+    "width": 14,
+    "team_color_fallback": "#ff1801"
+  },
+  "event": {
+    "anchor": "top-left",
+    "padding": [80, 70],
+    "font": "/System/Library/Fonts/HelveticaNeue.ttc",
+    "font_index": 4,
+    "size": 132,
+    "color": "#ffffff",
+    "uppercase": true,
+    "letter_spacing_px": 6,
+    "shadow": {"offset": [0, 4], "color": "#00000080", "blur": 6}
+  },
+  "timestamp": {
+    "anchor": "bottom-right",
+    "padding": [80, 70],
+    "font": "/System/Library/Fonts/HelveticaNeue.ttc",
+    "font_index": 10,
+    "size": 64,
+    "color": "#ffffffe0",
+    "format": "{h}:{mm}:{ss}",
+    "shadow": {"offset": [0, 3], "color": "#00000080", "blur": 4}
+  },
+  "session_label": {
+    "anchor": "top-right",
+    "padding": [80, 78],
+    "font": "/System/Library/Fonts/HelveticaNeue.ttc",
+    "font_index": 10,
+    "size": 36,
+    "color": "#ffffff90",
+    "uppercase": true,
+    "letter_spacing_px": 3
+  }
+}

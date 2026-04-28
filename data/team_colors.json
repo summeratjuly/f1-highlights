@@ -1,0 +1,61 @@
+{
+  "_comment": "HSV matching uses these hex RGB values as centroids. Multiple entries per team = multi-tone livery (any matches). `default` applies when no year-specific override exists. Edit overrides for seasons with a distinctive paint scheme (Merc 2020 black, McLaren 2015-17 silver, Williams Martini era). Primary color only — skip secondary sponsor stripes; saturation+hue tolerance in analyze_livery.py handles fuzz.",
+  "default": {
+    "RBR": ["#1E3A8A"],
+    "FER": ["#DC0000"],
+    "MCL": ["#FF8000"],
+    "MER": ["#00D2BE"],
+    "AMR": ["#006F62"],
+    "ALP": ["#0090FF"],
+    "WIL": ["#0A1E4F"],
+    "RB":  ["#2B4562"],
+    "AT":  ["#2B4562"],
+    "HAA": ["#B6BABD"],
+    "SAU": ["#52E252"],
+    "ALF": ["#900000"],
+    "FIN": ["#F596C8"],
+    "RP":  ["#F596C8"],
+    "REN": ["#FFF500"],
+    "LOT": ["#FFD700"],
+    "TOR": ["#469BFF"],
+    "MAN": ["#D62521"],
+    "AUD": ["#BB0A30"]
+  },
+  "overrides": {
+    "2015": {
+      "MCL": ["#C0C0C0"],
+      "LOT": ["#FFD700"],
+      "FIN": ["#F37A00"],
+      "SAU": ["#005F9E"]
+    },
+    "2016": {
+      "MCL": ["#C0C0C0"],
+      "FIN": ["#F596C8"],
+      "SAU": ["#005F9E"]
+    },
+    "2017": {
+      "MCL": ["#F37A00"],
+      "SAU": ["#005F9E"]
+    },
+    "2020": {
+      "MER": ["#000000"]
+    },
+    "2021": {
+      "RBR": ["#1E41FF"],
+      "AMR": ["#006F62"]
+    },
+    "2024": {
+      "RBR": ["#3671C6"],
+      "WIL": ["#64C4FF"],
+      "SAU": ["#52E252"]
+    },
+    "2025": {
+      "RBR": ["#3671C6"],
+      "WIL": ["#64C4FF"],
+      "SAU": ["#52E252"]
+    },
+    "2026": {
+      "AUD": ["#BB0A30"]
+    }
+  }
+}

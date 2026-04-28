@@ -1,0 +1,39 @@
+{
+  "year": 2025,
+  "_notes": "Hamilton to Ferrari. Sainz to Williams. Antonelli F1 rookie at Mercedes. Hadjar, Bortoleto, Doohan full-time rookies. Lawson started at Red Bull, demoted back to RB after 2 rounds; Tsunoda promoted to Red Bull. Doohan replaced by Colapinto mid-season at Alpine.",
+  "drivers": [
+    {"id": "NOR", "name": "Lando Norris",         "team": "McLaren",      "number": 4,  "aliases": ["norris", "lando norris", "lando"]},
+    {"id": "PIA", "name": "Oscar Piastri",        "team": "McLaren",      "number": 81, "aliases": ["piastri", "oscar piastri", "oscar"]},
+    {"id": "LEC", "name": "Charles Leclerc",      "team": "Ferrari",      "number": 16, "aliases": ["leclerc", "charles leclerc", "charles"]},
+    {"id": "HAM", "name": "Lewis Hamilton",       "team": "Ferrari",      "number": 44, "aliases": ["hamilton", "lewis hamilton", "lewis"]},
+    {"id": "VER", "name": "Max Verstappen",       "team": "Red Bull",     "number": 1,  "aliases": ["verstappen", "max verstappen", "max"]},
+    {"id": "LAW", "name": "Liam Lawson",          "team": "Red Bull",     "number": 30, "aliases": ["lawson", "liam lawson", "liam"]},
+    {"id": "TSU", "name": "Yuki Tsunoda",         "team": "Red Bull",     "number": 22, "aliases": ["tsunoda", "yuki tsunoda", "yuki"]},
+    {"id": "RUS", "name": "George Russell",       "team": "Mercedes",     "number": 63, "aliases": ["russell", "george russell", "george"]},
+    {"id": "ANT", "name": "Kimi Antonelli",       "team": "Mercedes",     "number": 12, "aliases": ["antonelli", "kimi antonelli", "kimi"]},
+    {"id": "ALO", "name": "Fernando Alonso",      "team": "Aston Martin", "number": 14, "aliases": ["alonso", "fernando alonso", "fernando"]},
+    {"id": "STR", "name": "Lance Stroll",         "team": "Aston Martin", "number": 18, "aliases": ["stroll", "lance stroll", "lance"]},
+    {"id": "GAS", "name": "Pierre Gasly",         "team": "Alpine",       "number": 10, "aliases": ["gasly", "pierre gasly", "pierre"]},
+    {"id": "DOO", "name": "Jack Doohan",          "team": "Alpine",       "number": 7,  "aliases": ["doohan", "jack doohan", "jack"]},
+    {"id": "COL", "name": "Franco Colapinto",     "team": "Alpine",       "number": 43, "aliases": ["colapinto", "franco colapinto", "franco"]},
+    {"id": "ALB", "name": "Alexander Albon",      "team": "Williams",     "number": 23, "aliases": ["albon", "alexander albon", "alex albon", "alex"]},
+    {"id": "SAI", "name": "Carlos Sainz",         "team": "Williams",     "number": 55, "aliases": ["sainz", "carlos sainz", "carlos"]},
+    {"id": "HAD", "name": "Isack Hadjar",         "team": "RB",           "number": 6,  "aliases": ["hadjar", "isack hadjar", "isack"]},
+    {"id": "OCO", "name": "Esteban Ocon",         "team": "Haas",         "number": 31, "aliases": ["ocon", "esteban ocon", "esteban"]},
+    {"id": "BEA", "name": "Oliver Bearman",       "team": "Haas",         "number": 87, "aliases": ["bearman", "oliver bearman", "ollie", "ollie bearman"]},
+    {"id": "HUL", "name": "Nico Hulkenberg",      "team": "Kick Sauber",  "number": 27, "aliases": ["hulkenberg", "hülkenberg", "nico hulkenberg", "nico"]},
+    {"id": "BOR", "name": "Gabriel Bortoleto",    "team": "Kick Sauber",  "number": 5,  "aliases": ["bortoleto", "gabriel bortoleto", "gabriel"]}
+  ],
+  "teams": [
+    {"id": "MCL", "name": "McLaren",      "aliases": ["mclaren"]},
+    {"id": "FER", "name": "Ferrari",      "aliases": ["ferrari", "scuderia"]},
+    {"id": "RBR", "name": "Red Bull",     "aliases": ["red bull", "rbr"]},
+    {"id": "MER", "name": "Mercedes",     "aliases": ["mercedes", "silver arrows"]},
+    {"id": "AMR", "name": "Aston Martin", "aliases": ["aston martin", "aston"]},
+    {"id": "ALP", "name": "Alpine",       "aliases": ["alpine"]},
+    {"id": "WIL", "name": "Williams",     "aliases": ["williams"]},
+    {"id": "RB",  "name": "RB",           "aliases": ["rb", "visa cash app rb", "vcarb", "racing bulls"]},
+    {"id": "HAA", "name": "Haas",         "aliases": ["haas"]},
+    {"id": "SAU", "name": "Kick Sauber",  "aliases": ["kick sauber", "sauber", "stake"]}
+  ]
+}

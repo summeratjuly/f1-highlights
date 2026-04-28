@@ -1,0 +1,18 @@
+# Python virtualenv (1.3GB — recreated from requirements.txt)
+.venv/
+venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Editor / OS clutter
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local pipeline working data — large + per-run, not source
+*.work/

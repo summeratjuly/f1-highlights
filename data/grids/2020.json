@@ -1,0 +1,41 @@
+{
+  "year": 2020,
+  "_notes": "COVID-shortened season. Toro Rosso rebranded AlphaTauri. Russell subbed at Mercedes (Sakhir). Hulkenberg subbed at Racing Point. Fittipaldi and Mick Schumacher subbed at Haas late season.",
+  "drivers": [
+    {"id": "HAM", "name": "Lewis Hamilton",    "team": "Mercedes",     "number": 44, "aliases": ["hamilton", "lewis hamilton", "lewis"]},
+    {"id": "BOT", "name": "Valtteri Bottas",   "team": "Mercedes",     "number": 77, "aliases": ["bottas", "valtteri bottas", "valtteri"]},
+    {"id": "VER", "name": "Max Verstappen",    "team": "Red Bull",     "number": 33, "aliases": ["verstappen", "max verstappen", "max"]},
+    {"id": "ALB", "name": "Alexander Albon",   "team": "Red Bull",     "number": 23, "aliases": ["albon", "alexander albon", "alex albon", "alex"]},
+    {"id": "SAI", "name": "Carlos Sainz",      "team": "McLaren",      "number": 55, "aliases": ["sainz", "carlos sainz", "carlos"]},
+    {"id": "NOR", "name": "Lando Norris",      "team": "McLaren",      "number": 4,  "aliases": ["norris", "lando norris", "lando"]},
+    {"id": "PER", "name": "Sergio Perez",      "team": "Racing Point", "number": 11, "aliases": ["perez", "pérez", "sergio perez", "sergio", "checo"]},
+    {"id": "STR", "name": "Lance Stroll",      "team": "Racing Point", "number": 18, "aliases": ["stroll", "lance stroll", "lance"]},
+    {"id": "HUL", "name": "Nico Hulkenberg",   "team": "Racing Point", "number": 27, "aliases": ["hulkenberg", "hülkenberg", "nico hulkenberg", "nico"]},
+    {"id": "RIC", "name": "Daniel Ricciardo",  "team": "Renault",      "number": 3,  "aliases": ["ricciardo", "daniel ricciardo", "daniel", "danny ric"]},
+    {"id": "OCO", "name": "Esteban Ocon",      "team": "Renault",      "number": 31, "aliases": ["ocon", "esteban ocon", "esteban"]},
+    {"id": "VET", "name": "Sebastian Vettel",  "team": "Ferrari",      "number": 5,  "aliases": ["vettel", "sebastian vettel", "sebastian", "seb"]},
+    {"id": "LEC", "name": "Charles Leclerc",   "team": "Ferrari",      "number": 16, "aliases": ["leclerc", "charles leclerc", "charles"]},
+    {"id": "GAS", "name": "Pierre Gasly",      "team": "AlphaTauri",   "number": 10, "aliases": ["gasly", "pierre gasly", "pierre"]},
+    {"id": "KVY", "name": "Daniil Kvyat",      "team": "AlphaTauri",   "number": 26, "aliases": ["kvyat", "daniil kvyat", "daniil"]},
+    {"id": "RAI", "name": "Kimi Raikkonen",    "team": "Alfa Romeo",   "number": 7,  "aliases": ["raikkonen", "räikkönen", "kimi raikkonen", "kimi"]},
+    {"id": "GIO", "name": "Antonio Giovinazzi","team": "Alfa Romeo",   "number": 99, "aliases": ["giovinazzi", "antonio giovinazzi", "antonio"]},
+    {"id": "GRO", "name": "Romain Grosjean",   "team": "Haas",         "number": 8,  "aliases": ["grosjean", "romain grosjean", "romain"]},
+    {"id": "MAG", "name": "Kevin Magnussen",   "team": "Haas",         "number": 20, "aliases": ["magnussen", "kevin magnussen", "kevin", "k-mag", "kmag"]},
+    {"id": "FIT", "name": "Pietro Fittipaldi", "team": "Haas",         "number": 51, "aliases": ["fittipaldi", "pietro fittipaldi", "pietro"]},
+    {"id": "MSC", "name": "Mick Schumacher",   "team": "Haas",         "number": 47, "aliases": ["schumacher", "mick schumacher", "mick"]},
+    {"id": "RUS", "name": "George Russell",    "team": "Williams",     "number": 63, "aliases": ["russell", "george russell", "george"]},
+    {"id": "LAT", "name": "Nicholas Latifi",   "team": "Williams",     "number": 6,  "aliases": ["latifi", "nicholas latifi", "nicholas"]}
+  ],
+  "teams": [
+    {"id": "MER", "name": "Mercedes",     "aliases": ["mercedes", "silver arrows"]},
+    {"id": "RBR", "name": "Red Bull",     "aliases": ["red bull", "rbr"]},
+    {"id": "MCL", "name": "McLaren",      "aliases": ["mclaren"]},
+    {"id": "RP",  "name": "Racing Point", "aliases": ["racing point"]},
+    {"id": "REN", "name": "Renault",      "aliases": ["renault"]},
+    {"id": "FER", "name": "Ferrari",      "aliases": ["ferrari", "scuderia"]},
+    {"id": "AT",  "name": "AlphaTauri",   "aliases": ["alphatauri", "alpha tauri"]},
+    {"id": "ALF", "name": "Alfa Romeo",   "aliases": ["alfa romeo", "alfa"]},
+    {"id": "HAA", "name": "Haas",         "aliases": ["haas"]},
+    {"id": "WIL", "name": "Williams",     "aliases": ["williams"]}
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "year": 2018,
+  "_notes": "Leclerc F1 rookie at Sauber (now Alfa Romeo Sauber). Sirotkin F1 rookie at Williams. Force India became Racing Point late season after administration.",
+  "drivers": [
+    {"id": "HAM", "name": "Lewis Hamilton",    "team": "Mercedes",            "number": 44, "aliases": ["hamilton", "lewis hamilton", "lewis"]},
+    {"id": "BOT", "name": "Valtteri Bottas",   "team": "Mercedes",            "number": 77, "aliases": ["bottas", "valtteri bottas", "valtteri"]},
+    {"id": "VET", "name": "Sebastian Vettel",  "team": "Ferrari",             "number": 5,  "aliases": ["vettel", "sebastian vettel", "sebastian", "seb"]},
+    {"id": "RAI", "name": "Kimi Raikkonen",    "team": "Ferrari",             "number": 7,  "aliases": ["raikkonen", "räikkönen", "kimi raikkonen", "kimi"]},
+    {"id": "VER", "name": "Max Verstappen",    "team": "Red Bull",            "number": 33, "aliases": ["verstappen", "max verstappen", "max"]},
+    {"id": "RIC", "name": "Daniel Ricciardo",  "team": "Red Bull",            "number": 3,  "aliases": ["ricciardo", "daniel ricciardo", "daniel", "danny ric"]},
+    {"id": "HUL", "name": "Nico Hulkenberg",   "team": "Renault",             "number": 27, "aliases": ["hulkenberg", "hülkenberg", "nico hulkenberg", "nico"]},
+    {"id": "SAI", "name": "Carlos Sainz",      "team": "Renault",             "number": 55, "aliases": ["sainz", "carlos sainz", "carlos"]},
+    {"id": "GRO", "name": "Romain Grosjean",   "team": "Haas",                "number": 8,  "aliases": ["grosjean", "romain grosjean", "romain"]},
+    {"id": "MAG", "name": "Kevin Magnussen",   "team": "Haas",                "number": 20, "aliases": ["magnussen", "kevin magnussen", "kevin", "k-mag", "kmag"]},
+    {"id": "ALO", "name": "Fernando Alonso",   "team": "McLaren",             "number": 14, "aliases": ["alonso", "fernando alonso", "fernando"]},
+    {"id": "VAN", "name": "Stoffel Vandoorne", "team": "McLaren",             "number": 2,  "aliases": ["vandoorne", "stoffel vandoorne", "stoffel"]},
+    {"id": "PER", "name": "Sergio Perez",      "team": "Force India",         "number": 11, "aliases": ["perez", "pérez", "sergio perez", "sergio", "checo"]},
+    {"id": "OCO", "name": "Esteban Ocon",      "team": "Force India",         "number": 31, "aliases": ["ocon", "esteban ocon", "esteban"]},
+    {"id": "LEC", "name": "Charles Leclerc",   "team": "Sauber",              "number": 16, "aliases": ["leclerc", "charles leclerc", "charles"]},
+    {"id": "ERI", "name": "Marcus Ericsson",   "team": "Sauber",              "number": 9,  "aliases": ["ericsson", "marcus ericsson", "marcus"]},
+    {"id": "GAS", "name": "Pierre Gasly",      "team": "Toro Rosso",          "number": 10, "aliases": ["gasly", "pierre gasly", "pierre"]},
+    {"id": "HAR", "name": "Brendon Hartley",   "team": "Toro Rosso",          "number": 28, "aliases": ["hartley", "brendon hartley", "brendon"]},
+    {"id": "STR", "name": "Lance Stroll",      "team": "Williams",            "number": 18, "aliases": ["stroll", "lance stroll", "lance"]},
+    {"id": "SIR", "name": "Sergey Sirotkin",   "team": "Williams",            "number": 35, "aliases": ["sirotkin", "sergey sirotkin", "sergey"]}
+  ],
+  "teams": [
+    {"id": "MER", "name": "Mercedes",      "aliases": ["mercedes", "silver arrows"]},
+    {"id": "FER", "name": "Ferrari",       "aliases": ["ferrari", "scuderia"]},
+    {"id": "RBR", "name": "Red Bull",      "aliases": ["red bull", "rbr"]},
+    {"id": "REN", "name": "Renault",       "aliases": ["renault"]},
+    {"id": "HAA", "name": "Haas",          "aliases": ["haas"]},
+    {"id": "MCL", "name": "McLaren",       "aliases": ["mclaren"]},
+    {"id": "FIN", "name": "Force India",   "aliases": ["force india", "racing point force india"]},
+    {"id": "SAU", "name": "Sauber",        "aliases": ["sauber", "alfa romeo sauber"]},
+    {"id": "TOR", "name": "Toro Rosso",    "aliases": ["toro rosso", "str"]},
+    {"id": "WIL", "name": "Williams",      "aliases": ["williams"]}
+  ]
+}

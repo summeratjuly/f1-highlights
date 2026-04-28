@@ -1,0 +1,38 @@
+{
+  "year": 2026,
+  "_notes": "New regulations era. Grid/team assignments below reflect the season opener as of file creation — verify against the official entry list before use. Audi takes over Kick Sauber branding. Cadillac expected as 11th team (not yet included — edit this file if their lineup is needed).",
+  "drivers": [
+    {"id": "VER", "name": "Max Verstappen",    "team": "Red Bull",     "number": 1,  "aliases": ["verstappen", "max verstappen", "max"]},
+    {"id": "LAW", "name": "Liam Lawson",       "team": "Red Bull",     "number": 30, "aliases": ["lawson", "liam lawson", "liam"]},
+    {"id": "LEC", "name": "Charles Leclerc",   "team": "Ferrari",      "number": 16, "aliases": ["leclerc", "charles leclerc", "charles"]},
+    {"id": "HAM", "name": "Lewis Hamilton",    "team": "Ferrari",      "number": 44, "aliases": ["hamilton", "lewis hamilton", "lewis"]},
+    {"id": "NOR", "name": "Lando Norris",      "team": "McLaren",      "number": 4,  "aliases": ["norris", "lando norris", "lando"]},
+    {"id": "PIA", "name": "Oscar Piastri",     "team": "McLaren",      "number": 81, "aliases": ["piastri", "oscar piastri", "oscar"]},
+    {"id": "RUS", "name": "George Russell",    "team": "Mercedes",     "number": 63, "aliases": ["russell", "george russell", "george"]},
+    {"id": "ANT", "name": "Kimi Antonelli",    "team": "Mercedes",     "number": 12, "aliases": ["antonelli", "kimi antonelli", "kimi"]},
+    {"id": "ALO", "name": "Fernando Alonso",   "team": "Aston Martin", "number": 14, "aliases": ["alonso", "fernando alonso", "fernando"]},
+    {"id": "STR", "name": "Lance Stroll",      "team": "Aston Martin", "number": 18, "aliases": ["stroll", "lance stroll", "lance"]},
+    {"id": "GAS", "name": "Pierre Gasly",      "team": "Alpine",       "number": 10, "aliases": ["gasly", "pierre gasly", "pierre"]},
+    {"id": "DOO", "name": "Jack Doohan",       "team": "Alpine",       "number": 7,  "aliases": ["doohan", "jack doohan", "jack"]},
+    {"id": "ALB", "name": "Alexander Albon",   "team": "Williams",     "number": 23, "aliases": ["albon", "alexander albon", "alex albon", "alex"]},
+    {"id": "SAI", "name": "Carlos Sainz",      "team": "Williams",     "number": 55, "aliases": ["sainz", "carlos sainz", "carlos"]},
+    {"id": "TSU", "name": "Yuki Tsunoda",      "team": "RB",           "number": 22, "aliases": ["tsunoda", "yuki tsunoda", "yuki"]},
+    {"id": "HAD", "name": "Isack Hadjar",      "team": "RB",           "number": 6,  "aliases": ["hadjar", "isack hadjar", "isack"]},
+    {"id": "HUL", "name": "Nico Hulkenberg",   "team": "Audi",         "number": 27, "aliases": ["hulkenberg", "hülkenberg", "nico hulkenberg", "nico"]},
+    {"id": "BOR", "name": "Gabriel Bortoleto", "team": "Audi",         "number": 5,  "aliases": ["bortoleto", "gabriel bortoleto", "gabriel"]},
+    {"id": "OCO", "name": "Esteban Ocon",      "team": "Haas",         "number": 31, "aliases": ["ocon", "esteban ocon", "esteban"]},
+    {"id": "BEA", "name": "Oliver Bearman",    "team": "Haas",         "number": 87, "aliases": ["bearman", "oliver bearman", "ollie", "ollie bearman"]}
+  ],
+  "teams": [
+    {"id": "RBR", "name": "Red Bull",     "aliases": ["red bull", "rbr"]},
+    {"id": "FER", "name": "Ferrari",      "aliases": ["ferrari", "scuderia"]},
+    {"id": "MCL", "name": "McLaren",      "aliases": ["mclaren"]},
+    {"id": "MER", "name": "Mercedes",     "aliases": ["mercedes", "silver arrows"]},
+    {"id": "AMR", "name": "Aston Martin", "aliases": ["aston martin", "aston"]},
+    {"id": "ALP", "name": "Alpine",       "aliases": ["alpine"]},
+    {"id": "WIL", "name": "Williams",     "aliases": ["williams"]},
+    {"id": "RB",  "name": "RB",           "aliases": ["rb", "visa cash app rb", "vcarb", "racing bulls"]},
+    {"id": "AUD", "name": "Audi",         "aliases": ["audi", "sauber"]},
+    {"id": "HAA", "name": "Haas",         "aliases": ["haas"]}
+  ]
+}

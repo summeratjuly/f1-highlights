@@ -1,0 +1,40 @@
+{
+  "year": 2022,
+  "_notes": "Ground-effect era begins. Russell to Mercedes. Raikkonen retired; Bottas to Alfa Romeo; Zhou F1 rookie. Mazepin dropped after invasion of Ukraine; Magnussen returned at Haas. Hulkenberg subbed at Aston Martin (Vettel COVID) early season. De Vries F1 debut at Williams (Italy) subbing for Albon.",
+  "drivers": [
+    {"id": "HAM", "name": "Lewis Hamilton",    "team": "Mercedes",     "number": 44, "aliases": ["hamilton", "lewis hamilton", "lewis"]},
+    {"id": "RUS", "name": "George Russell",    "team": "Mercedes",     "number": 63, "aliases": ["russell", "george russell", "george"]},
+    {"id": "VER", "name": "Max Verstappen",    "team": "Red Bull",     "number": 1,  "aliases": ["verstappen", "max verstappen", "max"]},
+    {"id": "PER", "name": "Sergio Perez",      "team": "Red Bull",     "number": 11, "aliases": ["perez", "pérez", "sergio perez", "sergio", "checo"]},
+    {"id": "LEC", "name": "Charles Leclerc",   "team": "Ferrari",      "number": 16, "aliases": ["leclerc", "charles leclerc", "charles"]},
+    {"id": "SAI", "name": "Carlos Sainz",      "team": "Ferrari",      "number": 55, "aliases": ["sainz", "carlos sainz", "carlos"]},
+    {"id": "NOR", "name": "Lando Norris",      "team": "McLaren",      "number": 4,  "aliases": ["norris", "lando norris", "lando"]},
+    {"id": "RIC", "name": "Daniel Ricciardo",  "team": "McLaren",      "number": 3,  "aliases": ["ricciardo", "daniel ricciardo", "daniel", "danny ric"]},
+    {"id": "ALO", "name": "Fernando Alonso",   "team": "Alpine",       "number": 14, "aliases": ["alonso", "fernando alonso", "fernando"]},
+    {"id": "OCO", "name": "Esteban Ocon",      "team": "Alpine",       "number": 31, "aliases": ["ocon", "esteban ocon", "esteban"]},
+    {"id": "VET", "name": "Sebastian Vettel",  "team": "Aston Martin", "number": 5,  "aliases": ["vettel", "sebastian vettel", "sebastian", "seb"]},
+    {"id": "STR", "name": "Lance Stroll",      "team": "Aston Martin", "number": 18, "aliases": ["stroll", "lance stroll", "lance"]},
+    {"id": "HUL", "name": "Nico Hulkenberg",   "team": "Aston Martin", "number": 27, "aliases": ["hulkenberg", "hülkenberg", "nico hulkenberg", "nico"]},
+    {"id": "GAS", "name": "Pierre Gasly",      "team": "AlphaTauri",   "number": 10, "aliases": ["gasly", "pierre gasly", "pierre"]},
+    {"id": "TSU", "name": "Yuki Tsunoda",      "team": "AlphaTauri",   "number": 22, "aliases": ["tsunoda", "yuki tsunoda", "yuki"]},
+    {"id": "BOT", "name": "Valtteri Bottas",   "team": "Alfa Romeo",   "number": 77, "aliases": ["bottas", "valtteri bottas", "valtteri"]},
+    {"id": "ZHO", "name": "Zhou Guanyu",       "team": "Alfa Romeo",   "number": 24, "aliases": ["zhou", "guanyu", "zhou guanyu"]},
+    {"id": "MAG", "name": "Kevin Magnussen",   "team": "Haas",         "number": 20, "aliases": ["magnussen", "kevin magnussen", "kevin", "k-mag", "kmag"]},
+    {"id": "MSC", "name": "Mick Schumacher",   "team": "Haas",         "number": 47, "aliases": ["schumacher", "mick schumacher", "mick"]},
+    {"id": "LAT", "name": "Nicholas Latifi",   "team": "Williams",     "number": 6,  "aliases": ["latifi", "nicholas latifi", "nicholas"]},
+    {"id": "ALB", "name": "Alexander Albon",   "team": "Williams",     "number": 23, "aliases": ["albon", "alexander albon", "alex albon", "alex"]},
+    {"id": "DEV", "name": "Nyck de Vries",     "team": "Williams",     "number": 45, "aliases": ["de vries", "nyck de vries", "nyck"]}
+  ],
+  "teams": [
+    {"id": "MER", "name": "Mercedes",     "aliases": ["mercedes", "silver arrows"]},
+    {"id": "RBR", "name": "Red Bull",     "aliases": ["red bull", "rbr"]},
+    {"id": "FER", "name": "Ferrari",      "aliases": ["ferrari", "scuderia"]},
+    {"id": "MCL", "name": "McLaren",      "aliases": ["mclaren"]},
+    {"id": "ALP", "name": "Alpine",       "aliases": ["alpine"]},
+    {"id": "AMR", "name": "Aston Martin", "aliases": ["aston martin", "aston"]},
+    {"id": "AT",  "name": "AlphaTauri",   "aliases": ["alphatauri", "alpha tauri"]},
+    {"id": "ALF", "name": "Alfa Romeo",   "aliases": ["alfa romeo", "alfa"]},
+    {"id": "HAA", "name": "Haas",         "aliases": ["haas"]},
+    {"id": "WIL", "name": "Williams",     "aliases": ["williams"]}
+  ]
+}
