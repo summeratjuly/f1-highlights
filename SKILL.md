@@ -13,6 +13,14 @@ The reel is shaped by one quality bar: **clarity of the moment** — the viewer 
 
 User has a **local F1 video file** (practice / qualifying / sprint / race) and wants a shorter cut focused on one driver or team. If they don't have a local file, help them record one first (see `~/f1-tv-recorder/`).
 
+If the source is an **OBS / screen recording** that includes browser chrome, the desktop, or moments before/after the user toggled fullscreen, run the preprocessing step first to trim the recording down to just the fullscreen-broadcast portions:
+
+```bash
+python scripts/preprocess_recording.py /path/to/raw.mov /path/to/clean.mov
+```
+
+The script samples frames at 1fps, uses pixel-edge variance to detect when the broadcast is fullscreen vs. when UI chrome / taskbar / loading screens are visible, then stream-copies only the fullscreen runs into the output file. Writes a `<output>.preprocess.json` audit alongside listing kept/dropped segments. Tunable: `--sample-fps`, `--min-run-sec`, `--stdev-threshold`. Then run the regular pipeline on the cleaned output.
+
 ## Always ask the user first
 
 Before running the pipeline, confirm with the user:
