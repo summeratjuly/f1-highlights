@@ -189,3 +189,15 @@ Qualifying has shorter runs per driver, so tighter timing avoids bleeding into o
 4. **Review the per-clip output** the pipeline prints at the end. Apply the model-layer review (see "Model layer" section): drop ORPHAN-flagged clips that reference moments outside the reel, drop near-duplicates, and surface anything off about the event-type sequence. Apply edits with `--drop-clips` and rerun (cached stages → seconds).
 5. If the output is too long/short or misses obvious scenes, adjust `--threshold` and rerun.
 6. Report clip count, total duration, `% of source`, and event-type breakdown from the pipeline output.
+7. **Offer to archive to NAS.** After reporting stats, ask the user: *"Move the source recording, the highlight reel, and the work directory to the NAS Recording archive?"* If yes:
+   - Read `/Volumes/Media/Recording/README.md` if you haven't this session — it's the source of truth for naming and may have been updated.
+   - Determine the F1 calendar round number for the race-year (look it up — Wikipedia's `<year>_Formula_One_World_Championship` page is canonical). Confirm the lowercase canonical race token (e.g. `canada`, `silverstone`, `hungarian`).
+   - Show the user the proposed destination paths first, then run:
+     ```bash
+     python scripts/move_to_nas.py \
+       --source <ORIGINAL_RECORDING.mov> \
+       --highlight <PIPELINE_OUTPUT.mp4> \
+       --workdir <PIPELINE_OUTPUT.work> \
+       --year <YEAR> --race <race_token> --round <NN> [--target ver]
+     ```
+   - The script asks for interactive confirmation (or pass `--yes` after the user has approved). It refuses to overwrite existing NAS paths.
