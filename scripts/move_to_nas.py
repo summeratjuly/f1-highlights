@@ -157,18 +157,52 @@ def archive_run(*, source: Path, highlight: Path, workdir: Path,
 
 def _move_dir_safe(src: Path, dst: Path) -> None:
     """Cross-device dir move that survives macOS Spotlight adding
-    `.DS_Store` mid-operation. shutil.move's internal `rmtree` raises
-    "Directory not empty" if any file appears in the source between
-    `copytree` and the final `os.rmdir` — easy to hit when the source
-    is a Finder-visible folder during a multi-second copy. We do the
-    copy ourselves and then force-clean the source via `rm -rf` which
-    tolerates such transient files.
+    `.DS_Store` mid-operation.
+
+    Both shutil.rmtree and a single `rm -rf` can lose the race: after
+    every file is removed, Spotlight may drop a new `.DS_Store` into
+    the now-empty dir BEFORE the final `rmdir`, which then fails with
+    "Directory not empty". Empirically this happens occasionally on
+    larger workdirs where the Finder window has been observing the
+    folder during the copy.
+
+    We retry the cleanup a few times with a short backoff. The data is
+    already on the NAS by this point, so even total cleanup failure is
+    a warning, not a hard error.
     """
     import subprocess
+    import time
     if dst.exists():
         raise FileExistsError(f"destination exists: {dst}")
     shutil.copytree(src, dst, symlinks=True)
-    subprocess.run(["rm", "-rf", str(src)], check=True)
+
+    last_err = ""
+    for attempt in range(6):
+        if not src.exists():
+            return
+        result = subprocess.run(
+            ["rm", "-rf", str(src)],
+            capture_output=True, text=True,
+        )
+        if not src.exists():
+            return
+        last_err = (result.stderr or result.stdout or "").strip()
+        time.sleep(0.5 + 0.5 * attempt)
+
+    # Last-ditch: force-purge any .DS_Store noise then try one more time.
+    if src.exists():
+        for ds in src.rglob(".DS_Store"):
+            try:
+                ds.unlink()
+            except OSError:
+                pass
+        shutil.rmtree(str(src), ignore_errors=True)
+
+    if src.exists():
+        # Data is safely on NAS; this is a cleanup wart, not a failure.
+        print(f"[move-to-nas] WARN: could not fully remove {src} after retries "
+              f"(last rm err: {last_err!r}). Data is on NAS — clean local "
+              f"leftover with `rm -rf {src}` when convenient.")
 
 
 def main() -> None:
