@@ -185,19 +185,15 @@ Qualifying has shorter runs per driver, so tighter timing avoids bleeding into o
 
 1. **Confirm year, session type, and target** with the user. Do not assume.
 2. Open `data/grids/{year}.json` to map a spoken name to an `id` and verify the target exists that season. Flag mid-season changes if relevant (e.g., "in 2025 Lawson started at Red Bull but was demoted after 2 rounds — is this the Australia race or later?").
-3. Activate the skill's venv and run `pipeline.py` with `--year`, `--session`, `--driver`/`--team`.
-4. **Review the per-clip output** the pipeline prints at the end. Apply the model-layer review (see "Model layer" section): drop ORPHAN-flagged clips that reference moments outside the reel, drop near-duplicates, and surface anything off about the event-type sequence. Apply edits with `--drop-clips` and rerun (cached stages → seconds).
-5. If the output is too long/short or misses obvious scenes, adjust `--threshold` and rerun.
-6. Report clip count, total duration, `% of source`, and event-type breakdown from the pipeline output.
-7. **Offer to archive to NAS.** After reporting stats, ask the user: *"Move the source recording, the highlight reel, and the work directory to the NAS Recording archive?"* If yes:
+3. **Ask the archive question UPFRONT, before launching the pipeline:**
+   *"After the highlight reel is built, move the source recording, highlight, and work directory to the NAS Recording archive?"*
+
+   If yes:
    - Read `/Volumes/Media/Recording/README.md` if you haven't this session — it's the source of truth for naming and may have been updated.
-   - Determine the F1 calendar round number for the race-year (look it up — Wikipedia's `<year>_Formula_One_World_Championship` page is canonical). Confirm the lowercase canonical race token (e.g. `canada`, `silverstone`, `hungarian`).
-   - Show the user the proposed destination paths first, then run:
-     ```bash
-     python scripts/move_to_nas.py \
-       --source <ORIGINAL_RECORDING.mov> \
-       --highlight <PIPELINE_OUTPUT.mp4> \
-       --workdir <PIPELINE_OUTPUT.work> \
-       --year <YEAR> --race <race_token> --round <NN> [--target ver]
-     ```
-   - The script asks for interactive confirmation (or pass `--yes` after the user has approved). It refuses to overwrite existing NAS paths.
+   - Determine the F1 calendar round number for the race-year (look it up — Wikipedia's `<year>_Formula_One_World_Championship` page is canonical) and confirm the lowercase canonical race token (e.g. `canada`, `silverstone`, `hungarian`).
+   - Show the user the proposed destination paths so they can sanity-check the round/race tokens before the long pipeline run starts.
+   - Add `--archive-to-nas --archive-race <token> --archive-round <NN>` to the `pipeline.py` invocation. Pipeline validates the args + the NAS mount up-front and only runs the move after a successful compile, no mid-run prompts.
+4. Activate the skill's venv and run `pipeline.py` with `--year`, `--session`, `--driver`/`--team`, plus the archive flags from step 3 if applicable.
+5. **Review the per-clip output** the pipeline prints at the end. Apply the model-layer review (see "Model layer" section): drop ORPHAN-flagged clips that reference moments outside the reel, drop near-duplicates, and surface anything off about the event-type sequence. Apply edits with `--drop-clips` and rerun (cached stages → seconds).
+6. If the output is too long/short or misses obvious scenes, adjust `--threshold` and rerun.
+7. Report clip count, total duration, `% of source`, and event-type breakdown from the pipeline output. If `--archive-to-nas` was set, the pipeline also prints the moved paths.

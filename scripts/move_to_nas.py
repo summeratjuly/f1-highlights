@@ -74,6 +74,67 @@ def _confirm(prompt: str) -> bool:
     return ans in ("y", "yes")
 
 
+def archive_run(*, source: Path, highlight: Path, workdir: Path,
+                year: int, race: str, round_no: int,
+                target: str = "ver",
+                nas_base: Path = _NAS_BASE_DEFAULT,
+                interactive: bool = True,
+                dry_run: bool = False) -> None:
+    """Programmatic entry point — same checks/move logic as the CLI.
+
+    Used by pipeline.py when `--archive-to-nas` is set so the move can run
+    immediately after compile without a separate invocation. Pass
+    interactive=False to skip the y/N prompt (the caller has already
+    confirmed upfront).
+    """
+    if not nas_base.exists():
+        raise SystemExit(
+            f"[move-to-nas] NAS base not mounted: {nas_base}. Mount the share and retry."
+        )
+    readme = nas_base / "README.md"
+    if not readme.exists():
+        raise SystemExit(
+            f"[move-to-nas] no README.md at {readme} — refusing to write blindly."
+        )
+    for p in (source, highlight, workdir):
+        if not p.exists():
+            raise SystemExit(f"[move-to-nas] not found: {p}")
+    if not workdir.is_dir():
+        raise SystemExit(f"[move-to-nas] workdir is not a directory: {workdir}")
+
+    new_source, new_highlight, new_workdir = _build_dest_paths(
+        nas_base, year, race.lower(), round_no, target.lower(),
+    )
+
+    print("[move-to-nas] planned moves:")
+    print(f"  source     {source}")
+    print(f"             →  {new_source}")
+    print(f"  highlight  {highlight}")
+    print(f"             →  {new_highlight}")
+    print(f"  workdir    {workdir}")
+    print(f"             →  {new_workdir}")
+
+    if dry_run:
+        print("[move-to-nas] dry-run; nothing moved.")
+        return
+
+    for p in (new_source, new_highlight, new_workdir):
+        _refuse_overwrite(p)
+
+    if interactive and not _confirm("[move-to-nas] proceed with the moves above?"):
+        print("[move-to-nas] aborted by user.")
+        return
+
+    new_source.parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(source), str(new_source))
+    print(f"[move-to-nas] ✓ source     → {new_source}")
+    shutil.move(str(highlight), str(new_highlight))
+    print(f"[move-to-nas] ✓ highlight  → {new_highlight}")
+    shutil.move(str(workdir), str(new_workdir))
+    print(f"[move-to-nas] ✓ workdir    → {new_workdir}")
+    print("[move-to-nas] done.")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -100,59 +161,12 @@ def main() -> None:
                     help="Print the planned moves and exit without touching anything.")
     args = ap.parse_args()
 
-    if not args.nas_base.exists():
-        raise SystemExit(
-            f"[move-to-nas] NAS base not mounted: {args.nas_base}. "
-            f"Mount the share and retry."
-        )
-    readme = args.nas_base / "README.md"
-    if not readme.exists():
-        raise SystemExit(
-            f"[move-to-nas] no README.md at {readme} — the NAS Recording folder "
-            f"is missing its naming-convention reference; refusing to write blindly."
-        )
-    for p in (args.source, args.highlight, args.workdir):
-        if not p.exists():
-            raise SystemExit(f"[move-to-nas] not found: {p}")
-    if not args.workdir.is_dir():
-        raise SystemExit(f"[move-to-nas] --workdir is not a directory: {args.workdir}")
-
-    new_source, new_highlight, new_workdir = _build_dest_paths(
-        args.nas_base, args.year, args.race.lower(),
-        args.round_no, args.target.lower(),
+    archive_run(
+        source=args.source, highlight=args.highlight, workdir=args.workdir,
+        year=args.year, race=args.race, round_no=args.round_no,
+        target=args.target, nas_base=args.nas_base,
+        interactive=not args.yes, dry_run=args.dry_run,
     )
-
-    print("[move-to-nas] planned moves:")
-    print(f"  source     {args.source}")
-    print(f"             →  {new_source}")
-    print(f"  highlight  {args.highlight}")
-    print(f"             →  {new_highlight}")
-    print(f"  workdir    {args.workdir}")
-    print(f"             →  {new_workdir}")
-    print()
-
-    if args.dry_run:
-        print("[move-to-nas] dry-run; nothing moved.")
-        return
-
-    for p in (new_source, new_highlight, new_workdir):
-        _refuse_overwrite(p)
-
-    if not args.yes:
-        if not _confirm("[move-to-nas] proceed with the moves above?"):
-            print("[move-to-nas] aborted by user.")
-            return
-
-    new_source.parent.mkdir(parents=True, exist_ok=True)
-
-    shutil.move(str(args.source), str(new_source))
-    print(f"[move-to-nas] ✓ source     → {new_source}")
-    shutil.move(str(args.highlight), str(new_highlight))
-    print(f"[move-to-nas] ✓ highlight  → {new_highlight}")
-    shutil.move(str(args.workdir), str(new_workdir))
-    print(f"[move-to-nas] ✓ workdir    → {new_workdir}")
-
-    print("[move-to-nas] done.")
 
 
 if __name__ == "__main__":

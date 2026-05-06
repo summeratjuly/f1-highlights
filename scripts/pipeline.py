@@ -50,6 +50,7 @@ from build_bridges import build_bridges
 from build_timeline import build_timeline
 from build_clips import build_clips
 from compile import compile_highlights
+from move_to_nas import archive_run as archive_run_to_nas
 from refine_boundaries import refine_clips
 from shared import CLIPS_JSON_NAME, HIT_COLOR, HIT_NUMBER, probe_duration
 
@@ -237,10 +238,41 @@ def main() -> None:
                          "open with orphan pronouns or end on dangling lists.")
     ap.add_argument("--no-refine-clips", dest="refine_clips", action="store_false",
                     help="Skip the LLM clip-boundary refiner (faster, but cuts may feel less natural).")
+    ap.add_argument("--archive-to-nas", action="store_true", default=False,
+                    help="After compile, move source / highlight / workdir to "
+                         "/Volumes/Media/Recording/<year>/ following the canonical naming. "
+                         "Confirmed upfront by the caller — pipeline does NOT prompt mid-run.")
+    ap.add_argument("--archive-race", default=None,
+                    help="Lowercase canonical race token (e.g. canada, silverstone). Required with --archive-to-nas.")
+    ap.add_argument("--archive-round", type=int, default=None,
+                    help="F1 calendar round number for the race-year. Required with --archive-to-nas.")
+    ap.add_argument("--archive-target", default="ver",
+                    help="Target focus code used in the destination filename (default 'ver').")
     args = ap.parse_args()
 
     if not args.video.exists():
         raise SystemExit(f"video not found: {args.video}")
+
+    # Validate archive args UPFRONT so a 60-min run doesn't fail at the
+    # last step on a typo. The user (or the calling skill) commits to
+    # archiving at invocation time — pipeline never prompts mid-run.
+    if args.archive_to_nas:
+        if not args.archive_race or args.archive_round is None:
+            raise SystemExit(
+                "[f1-highlights] --archive-to-nas requires --archive-race and "
+                "--archive-round (F1 calendar round number)"
+            )
+        nas_base = Path("/Volumes/Media/Recording")
+        if not nas_base.exists():
+            raise SystemExit(
+                f"[f1-highlights] --archive-to-nas: NAS not mounted at {nas_base}. "
+                f"Mount the share before launching."
+            )
+        if not (nas_base / "README.md").exists():
+            raise SystemExit(
+                f"[f1-highlights] --archive-to-nas: missing {nas_base}/README.md "
+                f"(naming-convention reference). Refusing to launch blindly."
+            )
 
     # Apply session-aware defaults for any flag the user left unset.
     defaults = SESSION_DEFAULTS[args.session]
@@ -379,6 +411,20 @@ def main() -> None:
         smooth=args.smooth, crossfade=args.xfade,
         bridges=bridges,
     )
+
+    if args.archive_to_nas:
+        print(f"[f1-highlights] stage 7: archiving to NAS...")
+        archive_run_to_nas(
+            source=args.video,
+            highlight=args.output,
+            workdir=workdir,
+            year=args.year,
+            race=args.archive_race,
+            round_no=args.archive_round,
+            target=args.archive_target,
+            interactive=False,  # caller already confirmed upfront
+        )
+
     print("[f1-highlights] done.")
 
 
