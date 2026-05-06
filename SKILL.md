@@ -18,7 +18,7 @@ User has a **local F1 video file** (practice / qualifying / sprint / race) and w
 Before running the pipeline, confirm with the user:
 
 1. **Season year** (2015-2026). The grid changes every year — Hamilton was Mercedes through 2024 and Ferrari from 2025; "Kimi" meant Raikkonen through 2021 and means Antonelli from 2025; teams renamed (Toro Rosso → AlphaTauri → RB; Alfa Romeo → Kick Sauber → Audi). Do not guess.
-2. **Session type**: `practice` | `qualifying` | `sprint` | `race`. This adjusts clip defaults (qualifying uses shorter pre/post-roll and merge-gap than a race).
+2. **Session type**: `practice` | `qualifying` | `sprint` | `race`. This adjusts clip defaults (qualifying uses shorter pre/post-roll and merge-gap than a race) and the event-classifier vocabulary. Race-only events (`overtake`, `pit`, `start`, `finish`) and qualifying-only events (`provisional_pole`, `q_elimination`, `hot_lap`) are detected via session-agnostic keyword matching with priority resolution. Sprint behaves like a short race. Race-only logic (start/finish bookend + rest-of-field bridge cards) is gated on `--session race`.
 3. **Target**: driver (`--driver ID`) or team (`--team ID`) or both. Look up the ID in `data/grids/{year}.json` — don't invent codes.
 
 ## How it works

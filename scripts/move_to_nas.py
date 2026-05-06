@@ -37,8 +37,20 @@ _NAS_BASE_DEFAULT = Path("/Volumes/Media/Recording")
 _RACE_TOKEN_RE = re.compile(r"^[a-z][a-z0-9_]*$")
 
 
+_SESSION_SUFFIX = {
+    "race":       "",          # default — no suffix, e.g. r07_canada_2016.mov
+    "qualifying": "_quali",    # r07_canada_quali_2016.mov
+    "sprint":     "_sprint",
+    "practice":   "_practice", # less common; usually we'd use fp1/fp2/fp3
+    "fp1":        "_fp1",
+    "fp2":        "_fp2",
+    "fp3":        "_fp3",
+}
+
+
 def _build_dest_paths(nas_base: Path, year: int, race: str,
-                      round_no: int, target: str) -> tuple[Path, Path, Path]:
+                      round_no: int, target: str,
+                      session: str = "race") -> tuple[Path, Path, Path]:
     if not _RACE_TOKEN_RE.match(race):
         raise SystemExit(
             f"[move-to-nas] race name must be lowercase ascii / digits / underscore: '{race}'"
@@ -49,8 +61,14 @@ def _build_dest_paths(nas_base: Path, year: int, race: str,
         )
     if not (1 <= round_no <= 30):
         raise SystemExit(f"[move-to-nas] round number {round_no} out of range (1-30)")
+    if session not in _SESSION_SUFFIX:
+        raise SystemExit(
+            f"[move-to-nas] unknown session '{session}'. "
+            f"Known: {', '.join(_SESSION_SUFFIX)}"
+        )
 
-    stem = f"r{round_no:02d}_{race}_{year}"
+    suffix = _SESSION_SUFFIX[session]
+    stem = f"r{round_no:02d}_{race}{suffix}_{year}"
     year_dir = nas_base / str(year)
     return (
         year_dir / f"{stem}.mov",
@@ -77,6 +95,7 @@ def _confirm(prompt: str) -> bool:
 def archive_run(*, source: Path, highlight: Path, workdir: Path,
                 year: int, race: str, round_no: int,
                 target: str = "ver",
+                session: str = "race",
                 nas_base: Path = _NAS_BASE_DEFAULT,
                 interactive: bool = True,
                 dry_run: bool = False) -> None:
@@ -104,6 +123,7 @@ def archive_run(*, source: Path, highlight: Path, workdir: Path,
 
     new_source, new_highlight, new_workdir = _build_dest_paths(
         nas_base, year, race.lower(), round_no, target.lower(),
+        session=session.lower(),
     )
 
     print("[move-to-nas] planned moves:")

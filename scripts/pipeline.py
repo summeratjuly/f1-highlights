@@ -422,6 +422,7 @@ def main() -> None:
             race=args.archive_race,
             round_no=args.archive_round,
             target=args.archive_target,
+            session=args.session,  # adds _quali / _sprint / _fp* suffix when not race
             interactive=False,  # caller already confirmed upfront
         )
 

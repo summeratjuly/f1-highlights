@@ -284,9 +284,14 @@ def build_clips(scores: list[float], transcript: dict,
         text_blob = " ".join(seg["text"] for seg in window).strip()
         orphan_refs = find_orphan_references(text_blob)
         # Pick the highest-priority event among the merged regions.
+        # Order mirrors clarity.EVENT_PRIORITY (kept inline to avoid an
+        # import cycle): incident > finish > start > quali peaks >
+        # race overtake/pit > generic quali > mention.
         event_type = next(
-            (e for e in ("incident", "finish", "start", "overtake",
-                         "pit", "qualifying_lap", "mention")
+            (e for e in ("incident", "finish", "start",
+                         "provisional_pole", "q_elimination",
+                         "overtake", "pit",
+                         "hot_lap", "qualifying_lap", "mention")
              if e in evs),
             "mention",
         )

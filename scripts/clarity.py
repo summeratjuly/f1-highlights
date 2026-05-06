@@ -17,12 +17,18 @@ import re
 # Per-event padding (pre_roll, post_roll) in seconds. Tuned so each event
 # type lands as a self-contained micro-story in the final reel.
 EVENT_PADDING = {
+    # Race events
     "overtake":       (4.0, 6.0),  # need the chase + the result
     "incident":       (3.0, 8.0),  # cause + reaction (often a replay follows)
     "pit":            (3.0, 5.0),  # in-lap context + out-lap commentary
-    "qualifying_lap": (2.0, 4.0),  # sector commentary + final time
     "start":          (5.0, 6.0),  # lights, launch, first corner
     "finish":         (3.0, 8.0),  # last lap + checkered + reaction
+    # Qualifying-specific events
+    "provisional_pole": (3.0, 6.0),  # the moment the lap goes purple at the top
+    "q_elimination":  (4.0, 6.0),    # the lap that decides if you progress
+    "hot_lap":        (3.0, 5.0),    # full flying lap commentary
+    # Cross-session
+    "qualifying_lap": (2.0, 4.0),  # sector commentary + final time (generic quali fallback)
     "mention":        (1.5, 2.5),  # passive name-check, low action
 }
 
@@ -60,11 +66,33 @@ EVENT_KEYWORDS: dict[str, list[str]] = {
     ],
     "qualifying_lap": [
         "purple", "purple sector", "personal best",
-        "fastest lap", "fastest of all", "first sector",
-        "second sector", "final sector",
+        "first sector", "second sector", "final sector",
         "going green", "green sector",
-        "provisional pole", "pole position", "on pole",
         "improving", "improved", "lap time",
+    ],
+    "provisional_pole": [
+        "provisional pole", "provisional fastest", "provisional p1",
+        "tops the times", "tops the timesheet", "tops the timesheets",
+        "leads the way", "fastest of all", "quickest of all",
+        "currently fastest", "currently quickest",
+        "pole position", "on pole", "takes pole", "claims pole",
+    ],
+    "q_elimination": [
+        "out in q1", "out in q2", "out in q3",
+        "knocked out in q1", "knocked out in q2",
+        "knocked out of qualifying",
+        "won't progress", "doesn't progress", "doesn't make it through",
+        "fail to progress", "didn't make the cut",
+        "eliminated in q1", "eliminated in q2",
+        "drops out of qualifying",
+    ],
+    "hot_lap": [
+        "going for it", "hot lap", "flying lap",
+        "first flying lap", "second flying lap", "final flying lap",
+        "completes the lap", "crosses the line on his",
+        "first push lap", "first timed lap",
+        "his first run", "his second run", "his final run",
+        "first attempt", "final attempt",
     ],
     "start": [
         "lights out", "off they go", "away cleanly",
@@ -81,7 +109,17 @@ EVENT_KEYWORDS: dict[str, list[str]] = {
 
 # Higher priority wins when a region matches multiple categories.
 # Incidents trump overtakes (a crash that passed someone is still a crash).
-EVENT_PRIORITY = ["incident", "finish", "start", "overtake", "pit", "qualifying_lap"]
+EVENT_PRIORITY = [
+    "incident",          # any session
+    "finish",            # race
+    "start",             # race
+    "provisional_pole",  # qualifying — strongest quali signal
+    "q_elimination",     # qualifying
+    "overtake",          # race
+    "pit",               # race
+    "hot_lap",           # qualifying
+    "qualifying_lap",    # generic quali fallback (sector improvements etc.)
+]
 
 # Cues that signal a replay is being shown. Used both alone (in commentary)
 # and together with the OCR "REPLAY" graphic.
