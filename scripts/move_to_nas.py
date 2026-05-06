@@ -150,9 +150,25 @@ def archive_run(*, source: Path, highlight: Path, workdir: Path,
     print(f"[move-to-nas] ✓ source     → {new_source}")
     shutil.move(str(highlight), str(new_highlight))
     print(f"[move-to-nas] ✓ highlight  → {new_highlight}")
-    shutil.move(str(workdir), str(new_workdir))
+    _move_dir_safe(workdir, new_workdir)
     print(f"[move-to-nas] ✓ workdir    → {new_workdir}")
     print("[move-to-nas] done.")
+
+
+def _move_dir_safe(src: Path, dst: Path) -> None:
+    """Cross-device dir move that survives macOS Spotlight adding
+    `.DS_Store` mid-operation. shutil.move's internal `rmtree` raises
+    "Directory not empty" if any file appears in the source between
+    `copytree` and the final `os.rmdir` — easy to hit when the source
+    is a Finder-visible folder during a multi-second copy. We do the
+    copy ourselves and then force-clean the source via `rm -rf` which
+    tolerates such transient files.
+    """
+    import subprocess
+    if dst.exists():
+        raise FileExistsError(f"destination exists: {dst}")
+    shutil.copytree(src, dst, symlinks=True)
+    subprocess.run(["rm", "-rf", str(src)], check=True)
 
 
 def main() -> None:
