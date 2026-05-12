@@ -41,16 +41,19 @@ _SESSION_SUFFIX = {
     "race":       "",          # default — no suffix, e.g. r07_canada_2016.mov
     "qualifying": "_quali",    # r07_canada_quali_2016.mov
     "sprint":     "_sprint",
+    "shootout":   "_shootout", # sprint-format Saturday shootout
     "practice":   "_practice", # less common; usually we'd use fp1/fp2/fp3
     "fp1":        "_fp1",
     "fp2":        "_fp2",
     "fp3":        "_fp3",
+    "press":      "_press",    # press conferences (optional --session-topic)
 }
 
 
 def _build_dest_paths(nas_base: Path, year: int, race: str,
                       round_no: int, target: str,
-                      session: str = "race") -> tuple[Path, Path, Path]:
+                      session: str = "race",
+                      session_topic: str | None = None) -> tuple[Path, Path, Path]:
     if not _RACE_TOKEN_RE.match(race):
         raise SystemExit(
             f"[move-to-nas] race name must be lowercase ascii / digits / underscore: '{race}'"
@@ -66,8 +69,17 @@ def _build_dest_paths(nas_base: Path, year: int, race: str,
             f"[move-to-nas] unknown session '{session}'. "
             f"Known: {', '.join(_SESSION_SUFFIX)}"
         )
+    if session_topic is not None and not _RACE_TOKEN_RE.match(session_topic):
+        raise SystemExit(
+            f"[move-to-nas] session topic must be lowercase ascii / digits / underscore: '{session_topic}'"
+        )
 
     suffix = _SESSION_SUFFIX[session]
+    if session_topic:
+        # Topic is appended to the session suffix to keep the per-race
+        # cluster together. e.g. press → press_drivers, press_postrace.
+        suffix = f"{suffix or '_' + session}_{session_topic}" if not suffix \
+                 else f"{suffix}_{session_topic}"
     stem = f"r{round_no:02d}_{race}{suffix}_{year}"
     year_dir = nas_base / str(year)
     return (
@@ -96,6 +108,7 @@ def archive_run(*, source: Path, highlight: Path, workdir: Path,
                 year: int, race: str, round_no: int,
                 target: str = "ver",
                 session: str = "race",
+                session_topic: str | None = None,
                 nas_base: Path = _NAS_BASE_DEFAULT,
                 interactive: bool = True,
                 dry_run: bool = False) -> None:
@@ -124,6 +137,7 @@ def archive_run(*, source: Path, highlight: Path, workdir: Path,
     new_source, new_highlight, new_workdir = _build_dest_paths(
         nas_base, year, race.lower(), round_no, target.lower(),
         session=session.lower(),
+        session_topic=session_topic.lower() if session_topic else None,
     )
 
     print("[move-to-nas] planned moves:")
@@ -223,6 +237,13 @@ def main() -> None:
                     help="F1 calendar round number (1-based, zero-padded in the resulting filename).")
     ap.add_argument("--target", default="ver",
                     help="Driver/team focus code (default 'ver'; also: 'ham', 'rbr', etc.).")
+    ap.add_argument("--session", default="race",
+                    choices=sorted(_SESSION_SUFFIX),
+                    help="Weekend session type. Non-race sessions get a "
+                         "_<session> suffix in the NAS stem.")
+    ap.add_argument("--session-topic", dest="session_topic", default=None,
+                    help="Optional sub-topic for the session (mainly for press: "
+                         "drivers / teamprincipals / postrace / thursday / friday).")
     ap.add_argument("--nas-base", type=Path, default=_NAS_BASE_DEFAULT,
                     help=f"NAS Recording root (default {_NAS_BASE_DEFAULT}).")
     ap.add_argument("--yes", action="store_true",
@@ -234,7 +255,10 @@ def main() -> None:
     archive_run(
         source=args.source, highlight=args.highlight, workdir=args.workdir,
         year=args.year, race=args.race, round_no=args.round_no,
-        target=args.target, nas_base=args.nas_base,
+        target=args.target,
+        session=args.session,
+        session_topic=args.session_topic,
+        nas_base=args.nas_base,
         interactive=not args.yes, dry_run=args.dry_run,
     )
 

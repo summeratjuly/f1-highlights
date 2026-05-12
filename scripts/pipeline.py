@@ -248,6 +248,9 @@ def main() -> None:
                     help="F1 calendar round number for the race-year. Required with --archive-to-nas.")
     ap.add_argument("--archive-target", default="ver",
                     help="Target focus code used in the destination filename (default 'ver').")
+    ap.add_argument("--archive-session-topic", default=None,
+                    help="Optional sub-topic for the session in the NAS stem "
+                         "(mainly for press: drivers / teamprincipals / postrace).")
     args = ap.parse_args()
 
     if not args.video.exists():
@@ -422,7 +425,8 @@ def main() -> None:
             race=args.archive_race,
             round_no=args.archive_round,
             target=args.archive_target,
-            session=args.session,  # adds _quali / _sprint / _fp* suffix when not race
+            session=args.session,  # adds _quali / _sprint / _press / _fp* suffix when not race
+            session_topic=args.archive_session_topic,  # e.g. press → drivers / postrace
             interactive=False,  # caller already confirmed upfront
         )
 
